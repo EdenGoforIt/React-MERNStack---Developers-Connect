@@ -259,7 +259,7 @@ router.delete(
 
 // @route   DELETE api/profile/education/:edu_id
 // @desc    Delete education from profile
-// @access  Private
+// @access  Private  
 router.delete(
   "/education/:edu_id",
   passport.authenticate("jwt", { session: false }),
@@ -297,3 +297,6 @@ router.delete(
 );
 
 module.exports = router;
+
+
+//23 delete education half the way
