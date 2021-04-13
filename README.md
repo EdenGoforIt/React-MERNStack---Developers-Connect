@@ -2,7 +2,7 @@
 
 This project is about sharing the posts, experience and their profiles with other people or developer.This will use Git open API to get profiles with other functionalities such as sharing profiles, thumbing up likes or dislikes and basic crud operations on the profile. 
 
-# Techstack  
+# Techstack - MERN
 ## What is the MERN Stack?
 >MERN stands for MongoDB, Express, React, Node, after the four key technologies that make up the stack.
 
