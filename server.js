@@ -14,6 +14,7 @@ app.use(bodyParser.json());
 
 // DB Config
 const db = require("./config/keys").mongoURI;
+const cors = require("cors");
 
 //conect to the MongoDB;
 mongoose
@@ -26,6 +27,7 @@ mongoose
 
 //passport middleware
 app.use(passport.initialize());
+app.use(cors());
 
 //passport configuration
 require("./config/passport")(passport);

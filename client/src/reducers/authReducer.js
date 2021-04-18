@@ -1,11 +1,14 @@
+import { TEST_DISPATCH } from "../actions/types";
+
 const initialState = {
   isAuthenticated: false,
   user: {},
 };
-
-export default function (state = initialState, action) {
+const registerUser = (state = initialState, action) => {
   switch (action.type) {
     default:
       return state;
   }
-}
+};
+
+export default registerUser;

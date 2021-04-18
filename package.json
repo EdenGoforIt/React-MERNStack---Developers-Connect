@@ -16,6 +16,7 @@
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
     "concurrently": "^6.0.0",
+    "cors": "^2.8.5",
     "express": "^4.17.1",
     "gravatar": "^1.8.0",
     "jsonwebtoken": "^8.5.1",
@@ -29,5 +30,6 @@
     "nodemon": "^2.0.3",
     "sass-loader": "^11.0.1",
     "style-loader": "^2.0.0"
-  }
+  },
+  "proxy": "https://localhost:5000"
 }
