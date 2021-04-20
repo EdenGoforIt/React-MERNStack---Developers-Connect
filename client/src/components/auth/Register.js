@@ -1,6 +1,7 @@
-import React, { Component, useEffect, useState, useDispatch } from "react";
+import React, { Component, useEffect, useState } from "react";
+
 import classnames from "classnames";
-import { connect } from "react-redux";
+import { useDispatch, connect, useSelector } from "react-redux";
 import { registerUser } from "../../actions/authActions";
 import PropTypes from "prop-types";
 
@@ -9,8 +10,8 @@ function Register() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [password2, setPassword2] = useState("");
-  const [errors, setErrors] = useState({});
   const dispatch = useDispatch();
+  const errors = useSelector((state) => state.errors);
 
   const handleName = (e) => {
     setName({ name: e.target.value });
@@ -33,10 +34,7 @@ function Register() {
       password: password,
       password2: password2,
     };
-    dispatch({
-      type: "REGISTER_USER",
-      payload: newUser,
-    });
+    dispatch(registerUser(newUser));
   };
 
   return (
@@ -51,13 +49,13 @@ function Register() {
                 <input
                   type="text"
                   className={classnames("form-control form-control-lg", {
-                    "is-invalid": errors.name,
+                    "is-invalid": errors && errors.name,
                   })}
                   placeholder="Name"
                   name="name"
                   onChange={handleName}
                 />
-                {errors.name && (
+                {errors && errors.name && (
                   <div className="invalid-feedback">{errors.name}</div>
                 )}
               </div>
@@ -65,13 +63,13 @@ function Register() {
                 <input
                   type="email"
                   className={classnames("form-control form-control-lg", {
-                    "is-invalid": errors.email,
+                    "is-invalid": errors && errors.email,
                   })}
                   placeholder="Email Address"
                   name="email"
                   onChange={handleEmail}
                 />
-                {errors.email && (
+                {errors && errors.email && (
                   <div className="invalid-feedback">{errors.email}</div>
                 )}
                 <small className="form-text text-muted">
@@ -83,13 +81,13 @@ function Register() {
                 <input
                   type="password"
                   className={classnames("form-control form-control-lg", {
-                    "is-invalid": errors.password,
+                    "is-invalid": errors && errors.password,
                   })}
                   placeholder="Password"
                   name="password"
                   onChange={handlePassword}
                 />
-                {errors.password && (
+                {errors && errors.password && (
                   <div className="invalid-feedback">{errors.password}</div>
                 )}
               </div>
@@ -97,13 +95,13 @@ function Register() {
                 <input
                   type="password"
                   className={classnames("form-control form-control-lg", {
-                    "is-invalid": errors.password2,
+                    "is-invalid": errors && errors.password2,
                   })}
                   placeholder="Confirm Password"
                   name="password2"
                   onChange={handlePassword2}
                 />
-                {errors.password2 && (
+                {errors && errors.password2 && (
                   <div className="invalid-feedback">{errors.password2}</div>
                 )}
               </div>
@@ -124,4 +122,10 @@ const mapStateToProps = (state) => ({
   auth: state.auth,
   errors: state.errors,
 });
-export default connect(mapStateToProps, { registerUser })(Register);
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    registerUser: (newUser) => dispatch(registerUser(newUser)),
+  };
+};
+export default connect(mapStateToProps, mapDispatchToProps)(Register);
