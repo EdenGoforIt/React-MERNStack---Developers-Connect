@@ -5,13 +5,14 @@ import { useDispatch, connect, useSelector } from "react-redux";
 import { registerUser } from "../../actions/authActions";
 import PropTypes from "prop-types";
 
-function Register() {
+export default function Register() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [password2, setPassword2] = useState("");
   const dispatch = useDispatch();
-  const errors = useSelector((state) => state.errors);
+
+  const { auth, errors } = useSelector((state) => state);
 
   const handleName = (e) => {
     setName({ name: e.target.value });
@@ -113,19 +114,15 @@ function Register() {
     </div>
   );
 }
-Register.propTypes = {
-  registerUser: PropTypes.func.isRequired,
-  auth: PropTypes.object.isRequired,
-  errors: PropTypes.shape({}),
-};
-const mapStateToProps = (state) => ({
-  auth: state.auth,
-  errors: state.errors,
-});
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    registerUser: (newUser) => dispatch(registerUser(newUser)),
-  };
-};
-export default connect(mapStateToProps, mapDispatchToProps)(Register);
+// const mapStateToProps = (state) => ({
+//   auth: state.auth,
+//   errors: state.errors,
+// });
+
+// const mapDispatchToProps = (dispatch) => {
+//   return {
+//     registerUser: (newUser) => dispatch(registerUser(newUser)),
+//   };
+// };
+// export default connect(mapStateToProps, mapDispatchToProps)(Register);
