@@ -1,8 +1,9 @@
 import React, { Component, useEffect, useState } from "react";
+import { useHistory } from 'react-router-dom';
 
 import classnames from "classnames";
 import { useDispatch, connect, useSelector } from "react-redux";
-import { registerUser } from "../../actions/authActions";
+import { loginUser, registerUser } from "../../actions/authActions";
 import PropTypes from "prop-types";
 
 export default function Register() {
@@ -35,6 +36,7 @@ export default function Register() {
       password: password,
       password2: password2,
     };
+    registerUser(newUser,useHistory );
     dispatch(registerUser(newUser));
   };
 
