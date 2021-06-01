@@ -1,5 +1,5 @@
 import React, { Component, useEffect, useState } from "react";
-import { useHistory } from 'react-router-dom';
+import { useHistory } from "react-router-dom";
 
 import classnames from "classnames";
 import { useDispatch, connect, useSelector } from "react-redux";
@@ -7,6 +7,8 @@ import { loginUser, registerUser } from "../../actions/authActions";
 import PropTypes from "prop-types";
 
 export default function Register() {
+  const history = useHistory();
+
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -16,16 +18,16 @@ export default function Register() {
   const { auth, errors } = useSelector((state) => state);
 
   const handleName = (e) => {
-    setName({ name: e.target.value });
+    setName(e.target.value);
   };
   const handleEmail = (e) => {
-    setEmail({ email: e.target.value });
+    setEmail(e.target.value);
   };
   const handlePassword = (e) => {
-    setPassword({ password: e.target.value });
+    setPassword(e.target.value);
   };
   const handlePassword2 = (e) => {
-    setPassword2({ password2: e.target.value });
+    setPassword2(e.target.value);
   };
 
   const onSubmit = (e) => {
@@ -36,7 +38,7 @@ export default function Register() {
       password: password,
       password2: password2,
     };
-    registerUser(newUser,useHistory );
+    registerUser(newUser, history);
     dispatch(registerUser(newUser));
   };
 
