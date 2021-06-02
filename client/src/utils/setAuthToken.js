@@ -1,12 +1,11 @@
 import axios from "axios";
-import axois from "axios";
 import { setCurrentUser } from "../actions/authActions";
 
 const setAuthToken = (token) => {
   if (token) {
     axios.defaults.headers.common["Authorization"] = token;
   } else {
-    delete axois.defaults.headers.common["Authorizatoin"];
+    delete axios.defaults.headers.common["Authorizatoin"];
   }
 };
 
