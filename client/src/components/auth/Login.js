@@ -48,7 +48,6 @@ class Login extends Component {
   }
 
   render() {
-    console.log(this.state);
     const { errors } = this.state;
 
     return (
