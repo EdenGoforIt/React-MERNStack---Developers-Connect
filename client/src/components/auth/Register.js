@@ -41,7 +41,11 @@ export default function Register() {
     registerUser(newUser, history);
     dispatch(registerUser(newUser));
   };
-
+  useEffect(() => {
+    if (auth.isAuthenticated) {
+      history.push("/dashboard");
+    }
+  });
   return (
     <div className="register">
       <div className="container">
