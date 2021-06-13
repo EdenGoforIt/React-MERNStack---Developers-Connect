@@ -5,6 +5,7 @@ import classnames from "classnames";
 import { useDispatch, connect, useSelector } from "react-redux";
 import { loginUser, registerUser } from "../../actions/authActions";
 import PropTypes from "prop-types";
+import TextFieldGroup from "../common/TextFieldGroup";
 
 export default function Register() {
   const history = useHistory();
@@ -54,66 +55,40 @@ export default function Register() {
             <h1 className="display-4 text-center">Sign Up</h1>
             <p className="lead text-center">Create your account</p>
             <form onSubmit={onSubmit}>
-              <div className="form-group">
-                <input
-                  type="text"
-                  className={classnames("form-control form-control-lg", {
-                    "is-invalid": errors && errors.name,
-                  })}
-                  placeholder="Name"
-                  name="name"
-                  onChange={handleName}
-                />
-                {errors && errors.name && (
-                  <div className="invalid-feedback">{errors.name}</div>
-                )}
-              </div>
-              <div className="form-group">
-                <input
-                  type="email"
-                  className={classnames("form-control form-control-lg", {
-                    "is-invalid": errors && errors.email,
-                  })}
-                  placeholder="Email Address"
-                  name="email"
-                  onChange={handleEmail}
-                />
-                {errors && errors.email && (
-                  <div className="invalid-feedback">{errors.email}</div>
-                )}
-                <small className="form-text text-muted">
-                  This site uses Gravatar so if you want a profile image, use a
-                  Gravatar email
-                </small>
-              </div>
-              <div className="form-group">
-                <input
-                  type="password"
-                  className={classnames("form-control form-control-lg", {
-                    "is-invalid": errors && errors.password,
-                  })}
-                  placeholder="Password"
-                  name="password"
-                  onChange={handlePassword}
-                />
-                {errors && errors.password && (
-                  <div className="invalid-feedback">{errors.password}</div>
-                )}
-              </div>
-              <div className="form-group">
-                <input
-                  type="password"
-                  className={classnames("form-control form-control-lg", {
-                    "is-invalid": errors && errors.password2,
-                  })}
-                  placeholder="Confirm Password"
-                  name="password2"
-                  onChange={handlePassword2}
-                />
-                {errors && errors.password2 && (
-                  <div className="invalid-feedback">{errors.password2}</div>
-                )}
-              </div>
+              <TextFieldGroup
+                placeholder="Name"
+                type="text"
+                name="name"
+                value={name}
+                onChange={handleName}
+                error={errors.name}
+              />
+              <TextFieldGroup
+                placeholder="Email"
+                type="email"
+                name="email"
+                value={email}
+                onChange={handleEmail}
+                error={errors.email}
+                info="This email use Gravatar"
+              />
+              <TextFieldGroup
+                placeholder="Password"
+                type="password"
+                name="password"
+                value={password}
+                onChange={handlePassword}
+                error={errors.password}
+              />
+              <TextFieldGroup
+                placeholder="Confirm Password"
+                type="password"
+                name="password2"
+                value={password2}
+                onChange={handlePassword2}
+                error={errors.password2}
+              />
+
               <input type="submit" className="btn btn-info btn-block mt-4" />
             </form>
           </div>
