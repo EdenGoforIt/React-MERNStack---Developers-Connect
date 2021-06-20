@@ -12,16 +12,20 @@ export const getCurrentProfile = () => (dispatch) => {
   axios
     .get("api/profile", { port: 5000 })
     .then((res) =>
-      dispatch({
-        type: GET_PROFILE,
-        payload: res.data,
-      })
+      setTimeout(() => {
+        dispatch({
+          type: GET_PROFILE,
+          payload: res.data,
+        });
+      }, 5000)
     )
     .catch((err) =>
-      dispatch({
-        type: GET_PROFILE,
-        payload: {},
-      })
+      setTimeout(() => {
+        dispatch({
+          type: GET_PROFILE,
+          payload: {},
+        });
+      }, 5000)
     );
 };
 
