@@ -18,7 +18,8 @@ const cors = require("cors");
 
 //conect to the MongoDB;
 mongoose
-  .connect(db, { useUnifiedTopology: true, useNewUrlParser: true }, (err) => {
+  .connect(db, (err) => {
+    console.log(err);
     if (err) console.error(err);
     else console.log("Connected to the mongodb");
   })
