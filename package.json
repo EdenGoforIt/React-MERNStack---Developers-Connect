@@ -31,5 +31,5 @@
     "sass-loader": "^11.0.1",
     "style-loader": "^2.0.0"
   },
-  "proxy": "https://localhost:5000"
+  "proxy": "http://localhost:5000"
 }
