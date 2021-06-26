@@ -13,6 +13,7 @@ import jwt_decode from "jwt-decode";
 import { setCurrentUser, logoutUser } from "./actions/authActions";
 import { clearCurrentProfile } from "./actions/profileActions";
 import PrivateRoute from "./components/common/PrivateRoute";
+import CreateProfile from "./components/profile/CreateProfile";
 
 if (localStorage.jwtToken) {
   setAuthToken(localStorage.jwtToken);
@@ -38,6 +39,13 @@ function App() {
             <Route exact path="/login" component={Login} />
             <Switch>
               <PrivateRoute exact path="/dashboard" component={Dashboard} />
+            </Switch>
+            <Switch>
+              <PrivateRoute
+                exact
+                path="/create-profile"
+                component={CreateProfile}
+              />
             </Switch>
           </div>
           <Footer />
